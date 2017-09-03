@@ -32,31 +32,31 @@ int menu() {
 		}
 	}
 }
-void sing() {
-	string dama[3][3];
+void singleplayer() {
+	string jogo[3][3];
 	for (int linha = 0; linha < 3; linha++) {
 		for (int coluna = 0; coluna < 3; coluna++) {
 			if (linha == 0) {
-				dama[linha][coluna] = coluna + 7;
+				jogo[linha][coluna] = coluna + 7;
 			}
 			if (linha == 1) {
-				dama[linha][coluna] = coluna + 4;
+				jogo[linha][coluna] = coluna + 4;
 			}
 			if (linha == 2) {
-				dama[linha][coluna] = coluna + 1;//tem q ver aqui
+				jogo[linha][coluna] = coluna + 1;//tem q ver aqui
 			}
 		}
 	}
 	for (int x = 0; x < 3; x++) {
 		for (int y = 0; y < 3; y++) {
-			cout << dama[x][y] << "\t";
+			cout << jogo[x][y] << "\t";
 		}
 		cout << endl;
 	}
 }
 
 
-void mult() {
+void multiplayer() {
 
 }
 int main()
@@ -64,10 +64,10 @@ int main()
 	int opcao = menu();
 	system("cls");
 	if (opcao == 1) {
-		sing();
+		singleplayer();
 	}
 	else {
-		mult();
+		multiplayer();
 	}
 	
     return 0;
