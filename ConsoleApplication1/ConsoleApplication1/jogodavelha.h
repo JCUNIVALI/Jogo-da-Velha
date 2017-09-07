@@ -9,6 +9,7 @@
 #include <time.h>
 using namespace std;
 
+void game();
 int menu() {
 	setlocale(LC_ALL, "Portuguese");
 	cout << "-->\tJogador vs CPU" << endl << "\tMultiplayer";
@@ -67,53 +68,61 @@ void verificarseganho(char jogo[3][3], bool &jogando, char simbolop1) {
 				cout << "PARABÉNS JOGADOR "<<jogadorx<<", VOCÊ GANHOU!" ;
 				getchar();
 				jogando = false;
+				game();
 				} //linha
 			if (jogo[0][y] == 88 && jogo[1][y] == 88 && jogo[2][y] == 88) {
 				system("cls");
 				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
+				game();
 			} //coluna
 			if (jogo[0][0] == 88 && jogo[1][1] == 88 && jogo[2][2] == 88) {
 				system("cls");
 				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
+				game();
 			} //dp
 			if (jogo[0][2] == 88 && jogo[1][1] == 88 && jogo[2][0] == 88) {
 				system("cls");
 				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
+				game();
 			} //ds
 			if (jogo[x][0] == 79 && jogo[x][1] == 79 && jogo[x][2] == 79) {
 				system("cls");
 				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
+				game();
 			} //linha
 			if (jogo[0][y] == 79 && jogo[1][y] == 79 && jogo[2][y] == 79) {
 				system("cls");
 				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
+				game();
 			} //coluna
 			if (jogo[0][0] == 79 && jogo[1][1] == 79 && jogo[2][2] == 79) {
 				system("cls");
 				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
+				game();
 			} //dp
 			if (jogo[0][2] == 79 && jogo[1][1] == 79 && jogo[2][0] == 79) {
 				system("cls");
 				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
+				game();
 			} //ds
 		}
 	}
 }
-void iniciarjogosingleplayer(char jogo[3][3], char simbolop1, char simbolop2) {
+void iniciarjogo(char jogo[3][3], char simbolop1, char simbolop2,int opcaojogo) {
 	bool jogando = true;
 	int vezjogador = 1;
 	while (jogando) {
@@ -190,13 +199,19 @@ void iniciarjogosingleplayer(char jogo[3][3], char simbolop1, char simbolop2) {
 			}
 		}
 		verificarseganho(jogo, jogando, simbolop1);
+		cout << "Jogador " << vezjogador << endl;
 		if (vezjogador == 2) {
 			bool pc = true;
 			int local;
 			while (pc) {
-				local = rand() % 57;
-				while (local <49) {
+				if (opcaojogo == 1) {
 					local = rand() % 57;
+					while (local < 49) {
+						local = rand() % 57;
+					}
+				}
+				else {
+					local = getch();
 				}
 				if ((int)local == 55 && jogo[0][0] == '7') {
 					jogo[0][0] = simbolop2;
@@ -267,13 +282,15 @@ void iniciarjogosingleplayer(char jogo[3][3], char simbolop1, char simbolop2) {
 }
 
 char escolhersimbolo(char &simbolop2) {
+	system("cls");
 	cout << "Player 1\nEscolha seu simbolo para jogar pressionando o número correspondente:" << endl << "CÍRCULO (1)" << endl << "X       (2)";
-	char simbolop1 = getch();
+	char simbolop1 = 79;
+	simbolop1 = getch();
 	if ((int)simbolop1 == 49) {
 		simbolop1 = 79;
 		simbolop2 = 88;
 	}
-	else if ((int)simbolop1 == 50) {
+	if ((int)simbolop1 == 50) {
 		simbolop1 = 88;
 		simbolop2 = 79;
 	}
@@ -281,9 +298,10 @@ char escolhersimbolo(char &simbolop2) {
 	return simbolop1;
 }
 
-void singleplayer() {
+void game() {
 	char jogo[3][3];
 	char simbolop1, simbolop2;
+	int opcao = menu();
 	for (int linha = 0; linha < 3; linha++) {
 		for (int coluna = 0; coluna < 3; coluna++) {
 			if (linha == 0) {
@@ -299,12 +317,10 @@ void singleplayer() {
 	}
 	simbolop1 = escolhersimbolo(simbolop2);
 	desenharjogo(jogo);
-	iniciarjogosingleplayer(jogo,simbolop1,simbolop2);
-	cout << "FIM DE JOGO.";
+	iniciarjogo(jogo,simbolop1,simbolop2,opcao);
 }
 
 
-void multiplayer() {
 
-}
+
 #endif

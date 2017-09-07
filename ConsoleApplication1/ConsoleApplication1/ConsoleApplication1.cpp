@@ -8,14 +8,7 @@ using namespace std;
 
 int main()
 {
-	int opcao = menu();
-	system("cls");
-	if (opcao == 1) {
-		singleplayer();
-	}
-	else {
-		multiplayer();
-	}
+	game();
 
 	return 0;
 }
