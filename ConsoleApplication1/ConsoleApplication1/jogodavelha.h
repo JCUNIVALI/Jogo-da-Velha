@@ -53,14 +53,12 @@ void desenharjogo(char jogo[3][3]) {
 }
 
 void verificarseganho(char jogo[3][3], bool &jogando, char simbolop1) {
-	char jogadorx, jogadoro;
+	char jogadorx;
 	if (simbolop1 == 88) {
 		jogadorx = 'X';
-		jogadoro = 'O';
 	}
 	else {
 		jogadorx = 'O';
-		jogadoro = 'X';
 	}
 	for (int x = 0; x < 3; x++) {
 		for (int y = 0; y < 3; y++){
@@ -90,25 +88,25 @@ void verificarseganho(char jogo[3][3], bool &jogando, char simbolop1) {
 			} //ds
 			if (jogo[x][0] == 79 && jogo[x][1] == 79 && jogo[x][2] == 79) {
 				system("cls");
-				cout << "PARABÉNS JOGADOR " << jogadoro << ", VOCÊ GANHOU!";
+				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
 			} //linha
 			if (jogo[0][y] == 79 && jogo[1][y] == 79 && jogo[2][y] == 79) {
 				system("cls");
-				cout << "PARABÉNS JOGADOR " << jogadoro << ", VOCÊ GANHOU!";
+				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
 			} //coluna
 			if (jogo[0][0] == 79 && jogo[1][1] == 79 && jogo[2][2] == 79) {
 				system("cls");
-				cout << "PARABÉNS JOGADOR " << jogadoro << ", VOCÊ GANHOU!";
+				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
 			} //dp
 			if (jogo[0][2] == 79 && jogo[1][1] == 79 && jogo[2][0] == 79) {
 				system("cls");
-				cout << "PARABÉNS JOGADOR " << jogadoro << ", VOCÊ GANHOU!";
+				cout << "PARABÉNS JOGADOR " << jogadorx << ", VOCÊ GANHOU!";
 				getchar();
 				jogando = false;
 			} //ds
