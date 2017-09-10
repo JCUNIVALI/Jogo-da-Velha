@@ -54,6 +54,7 @@ void desenharjogo(char jogo[3][3]) {
 }
 
 void verificarseganho(char jogo[3][3], bool &jogando) {
+	int empate = 0;
 	for (int x = 0; x < 3; x++) {
 		for (int y = 0; y < 3; y++){
 			if (jogo[x][0] == 88 && jogo[x][1] == 88 && jogo[x][2] == 88) {
@@ -112,7 +113,17 @@ void verificarseganho(char jogo[3][3], bool &jogando) {
 				jogando = false;
 				game();
 			} //ds
+			if (jogo[x][y] == 79 || jogo[x][y] == 88) {
+				empate++;
+			}
 		}
+	}
+	if (empate == 9) {
+		system("cls");
+		cout << "EMPATOU!";
+		getchar();
+		jogando = false;
+		game();
 	}
 }
 void iniciarjogo(char jogo[3][3], char simbolop1, char simbolop2,int opcaojogo) {
@@ -282,13 +293,18 @@ char escolhersimbolo(char &simbolop2) {
 	if ((int)simbolop1 == 49) {
 		simbolop1 = 79;
 		simbolop2 = 88;
+		system("cls");
+		return simbolop1;
 	}
 	if ((int)simbolop1 == 50) {
 		simbolop1 = 88;
 		simbolop2 = 79;
+		system("cls");
+		return simbolop1;
 	}
-	system("cls");
-	return simbolop1;
+	else {
+		simbolop1 = escolhersimbolo(simbolop2);
+	}
 }
 
 void game() {
@@ -312,8 +328,4 @@ void game() {
 	desenharjogo(jogo);
 	iniciarjogo(jogo,simbolop1,simbolop2,opcao);
 }
-
-
-
-
 #endif
