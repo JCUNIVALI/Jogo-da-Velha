@@ -1,4 +1,4 @@
-// dama.cpp : Define o ponto de entrada para a aplicação de console.
+// dama.cpp : Define o ponto de entrada para a aplicaÃ§Ã£o de console.
 //
 
 #include "stdafx.h"
