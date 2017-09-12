@@ -1,2 +1,2 @@
-# trabdama
-jogo de damas
+# trabvelha
+jogo da velha
